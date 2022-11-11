@@ -26,6 +26,7 @@ public class Controlador {
     private RegistrarCliente registrarCliente;
     private RegistrarProducto registrarProducto;
     private ProcesoVenta procesoVenta;
+    private VisualizarVenta visualizarVenta;
 
     public Controlador(Fecha hoy) {
         this.hoy = hoy;
@@ -44,35 +45,44 @@ public class Controlador {
             case 1 -> registrarCliente.dispose();
             case 2 -> registrarProducto.dispose();
             case 3 -> procesoVenta.dispose();
+            case 4 -> visualizarVenta.dispose();
         }
         switch (enable) {
             case 0 -> vistaNegocio.setEnabled(true);
             case 1 -> registrarCliente.setEnabled(true);
             case 2 -> registrarProducto.setEnabled(true);
             case 3 -> procesoVenta.setEnabled(true);
+            case 4 -> visualizarVenta.setEnabled(true);
         }
     }
 
     public void mostrar(int id) {
+        this.mostrar(id, null);
+    }
+    public void mostrar(int id, Venta venta) {
         vistaNegocio.setEnabled(false);
         
         switch (id) {
-            case 1:
+            case 1 -> {
                 registrarCliente = new RegistrarCliente(this);
                 registrarCliente.setLocationRelativeTo(null);
                 registrarCliente.setVisible(true);
-                break;
-            case 2: 
+            }
+            case 2 -> { 
                 registrarProducto = new RegistrarProducto(this);
                 registrarProducto.setLocationRelativeTo(null);
                 registrarProducto.setVisible(true);
-                break;
-            case 3: 
+            }
+            case 3 -> { 
                 procesoVenta = new ProcesoVenta(this);
                 procesoVenta.setLocationRelativeTo(null);
                 procesoVenta.setVisible(true);
-                break;
-
+            }
+            case 4 -> {
+                visualizarVenta = new VisualizarVenta(this, venta);
+                visualizarVenta.setLocationRelativeTo(null);
+                visualizarVenta.setVisible(true);
+            }
         }
     }
     
@@ -219,5 +229,14 @@ public class Controlador {
         catch (Exception e) {
             JOptionPane.showMessageDialog(procesoVenta, "Dato invalido: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    public void visualizarVenta() {
+        JTable tablaVentas = vistaNegocio.getTablaVentas();
+        int filaElegida = tablaVentas.getSelectedRow();
+        
+        Venta venta = negocio.getVentaById((int) tablaVentas.getValueAt(filaElegida, 0));
+        
+        this.mostrar(4, venta);
     }
 }

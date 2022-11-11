@@ -35,6 +35,10 @@ public class VentaEnCuotas extends Venta {
         }
     }
 
+    public ArrayList<Cuota> getCuotas() {
+        return cuotas;
+    }
+
     @Override
     public Ticket generarTicket() {
         TicketEnCuotas ticket = new TicketEnCuotas(super.getComprador().getNombre(), super.getFechaCompra(), super.getProductos(), super.getMonto(), cuotas);

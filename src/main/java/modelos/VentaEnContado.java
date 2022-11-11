@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class VentaEnContado extends Venta {
 
+    VentaEnContado() {
+    }
     public VentaEnContado(int id, Cliente comprador, ArrayList<Producto> productos, Fecha fechaCompra) {
         super(id, comprador, productos, fechaCompra);
     }

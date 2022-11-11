@@ -8,10 +8,10 @@ package modelos;
  *
  * @author root
  */
-class Cuota {
+public class Cuota {
     private float importe;
-    private Fecha vencimiento;
     private Fecha fechaPago;
+    private Fecha vencimiento;
     private int numeroCuota;
     private boolean pagada;
 
@@ -21,6 +21,18 @@ class Cuota {
         this.fechaPago = fechaPago;
         this.pagada = false;
         this.vencimiento = fechaPago.aumentarFecha(1);
+    }
+
+    public Fecha getVencimiento() {
+        return vencimiento;
+    }
+
+    public int getNumeroCuota() {
+        return numeroCuota;
+    }
+
+    public boolean isPagada() {
+        return pagada;
     }
 
     public float getImporte() {

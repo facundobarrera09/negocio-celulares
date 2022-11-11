@@ -17,6 +17,9 @@ public abstract class Venta {
     private Fecha fechaCompra;
     private float monto;
 
+    public Venta() {
+        
+    }
     public Venta(int id, Cliente comprador, ArrayList<Producto> productos, Fecha fechaCompra) {
         this.id = id;
         this.comprador = comprador;

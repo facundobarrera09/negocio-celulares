@@ -107,10 +107,24 @@ public class Negocio {
         for (Cliente c: clientes) {
             if (c.getId() == id) {
                 cliente = c;
+                break;
             }
         }
         
         return cliente;
+    }
+    
+    public Venta getVentaById(int id) {
+        Venta venta = new VentaEnContado();
+        
+        for (Venta v: ventas) {
+            if (v.getId() == id) {
+                venta = v;
+                break;
+            }
+        }
+        
+        return venta;
     }
 
     public ArrayList<Producto> getProductos() {
