@@ -239,4 +239,14 @@ public class Controlador {
         
         this.mostrar(4, venta);
     }
+
+    public void pagarCuota() {
+        JTable tablaCuotas = visualizarVenta.getCuotas();
+        int filaElegida = tablaCuotas.getSelectedRow();
+
+        Cuota cuota = ((VentaEnCuotas) visualizarVenta.getVenta()).getCuotaById((int) tablaCuotas.getValueAt(filaElegida, 0));
+
+        cuota.setPagada(true);
+        tablaCuotas.setValueAt("Pagada", filaElegida, 4);
+    }
 }

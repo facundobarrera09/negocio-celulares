@@ -39,6 +39,18 @@ public class VentaEnCuotas extends Venta {
         return cuotas;
     }
 
+    public Cuota getCuotaById(int id) {
+        Cuota cuota = new Cuota();
+
+        for (Cuota c: cuotas) {
+            if (c.getNumeroCuota() == id) {
+                cuota = c;
+            }
+        }
+
+        return cuota;
+    }
+
     @Override
     public Ticket generarTicket() {
         TicketEnCuotas ticket = new TicketEnCuotas(super.getComprador().getNombre(), super.getFechaCompra(), super.getProductos(), super.getMonto(), cuotas);

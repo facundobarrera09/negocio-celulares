@@ -15,6 +15,9 @@ public class Cuota {
     private int numeroCuota;
     private boolean pagada;
 
+    public Cuota() {
+        
+    }
     public Cuota(int numeroCuota, float importe, Fecha fechaPago) {
         this.numeroCuota = numeroCuota;
         this.importe = importe;

@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 import modelos.*;
 
@@ -56,6 +57,23 @@ public class VisualizarVenta extends javax.swing.JFrame {
                 controlador.salir(-1, 0);
             }
         });
+        
+        this.jTable2.getSelectionModel().addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            @Override
+            public void valueChanged(javax.swing.event.ListSelectionEvent event) {
+                lec_tableRowSelected(event);
+            }
+        });
+    }
+
+    private void lec_tableRowSelected(ListSelectionEvent event) {
+        int index = this.jTable2.getSelectedRow();
+        if (index > -1) {
+            this.jButton1.setEnabled(true);
+        }
+        else {
+            this.jButton1.setEnabled(false);
+        }
     }
 
     /**
@@ -160,6 +178,11 @@ public class VisualizarVenta extends javax.swing.JFrame {
 
         jButton1.setText("Pagar Cuota");
         jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("-");
 
@@ -242,6 +265,10 @@ public class VisualizarVenta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controlador.pagarCuota();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public JLabel getId() {
         return jLabel8;
     }
@@ -265,7 +292,10 @@ public class VisualizarVenta extends javax.swing.JFrame {
     public JTable getCuotas() {
         return jTable2;
     }
-    
+
+    public Venta getVenta() {
+        return venta;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
