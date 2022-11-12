@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class VentaEnCuotas extends Venta {
     private int cantidadDeCuotas;
-    private ArrayList<Cuota> cuotas = new ArrayList();
+    private ArrayList<Cuota> cuotas = new ArrayList<Cuota>();
 
     public VentaEnCuotas(int id, Cliente comprador, ArrayList<Producto> productos, Fecha fechaCompra, int cantidadDeCuotas) throws Exception {        
         super(id, comprador, productos, fechaCompra);

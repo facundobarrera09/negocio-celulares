@@ -24,7 +24,7 @@ public class Producto {
     }
     
     public static ArrayList<Producto> generarLista(ArrayList<Producto> productos, ArrayList<Integer> codigos) {
-        ArrayList<Producto> lista = new ArrayList();
+        ArrayList<Producto> lista = new ArrayList<Producto>();
         
         for (int codigo: codigos) {
             for (Producto p: productos) {

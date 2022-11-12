@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import modelos.*;
 import vistas.*;
 
@@ -141,7 +140,7 @@ public class Controlador {
     }
     
     public void agregarProductosALista() {
-        ArrayList<Integer> codigos = new ArrayList();
+        ArrayList<Integer> codigos = new ArrayList<Integer>();
         
         try {
             JTextField textoCodigos = procesoVenta.getCodigos();
@@ -174,7 +173,7 @@ public class Controlador {
             int rows = modeloTabla.getRowCount();
             int cantidadDeCuotas = Integer.parseInt(procesoVenta.getCuotas().getText());
             float monto, importe;
-            ArrayList<Producto> lista = new ArrayList();
+            ArrayList<Producto> lista = new ArrayList<Producto>();
             
             if (rows == 0) {
                 throw new Exception("No se cargaron productos");
@@ -208,7 +207,7 @@ public class Controlador {
             DefaultTableModel modeloTablaLista = (DefaultTableModel) procesoVenta.getLista().getModel();
             int rows = modeloTablaLista.getRowCount();
             int cantidadDeCuotas = Integer.parseInt(procesoVenta.getCuotas().getText());
-            ArrayList<Producto> lista = new ArrayList();
+            ArrayList<Producto> lista = new ArrayList<Producto>();
             
             Cliente comprador = new Cliente((int) modeloTablaCliente.getValueAt(0, 0), (String) modeloTablaCliente.getValueAt(0, 2), (int) modeloTablaCliente.getValueAt(0, 1), (String) modeloTablaCliente.getValueAt(0, 3));
             
